@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: voting-app
-        image: busyqa/voting-app
+        image: dockersamples/examplevotingapp_vote
         ports:
         - containerPort: 80
