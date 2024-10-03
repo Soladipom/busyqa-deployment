@@ -15,7 +15,7 @@ spec:
        volumes:
        - name: pvc
          persistentVolumeClaim:
-           claimName: voting-pvc    
+           claimName: vote-pvc    
        containers:
        - name: mongodbcontainer
          image: mongo
