@@ -10,8 +10,6 @@ scaling_config {
     min_size     = var.min_size
   }
 
-  depends_on = [aws_eks_cluster.eks_cluster]
-
   update_config {
     max_unavailable = 1
   }
