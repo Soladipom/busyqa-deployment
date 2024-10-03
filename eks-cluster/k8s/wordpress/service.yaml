@@ -3,10 +3,9 @@ kind: Service
 metadata:
   name: wordpress-svc
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
   - port: 80
-    protocol: TCP
     targetPort: 80
   selector:
     app: wordpress
