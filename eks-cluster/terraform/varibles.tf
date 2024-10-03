@@ -32,9 +32,9 @@ variable "min_size" {
   default = 3
 }
 
-variable "node_group_role" {
-  description = "IAM role for the node group"
-}
+# variable "node_group_role" {
+#  description = "IAM role for the node group"
+# }
 
 variable "eks_cluster_role_arn" {
   description = "ARN of the IAM role for the EKS cluster"
