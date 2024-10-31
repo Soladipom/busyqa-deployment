@@ -1,13 +1,12 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: <hpaName>
-  namespace: <namespace>
+  name: vote-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: <deploymentName>
-  minReplicas: 1
-  maxReplicas: 3
-  targetCPUUtilizationPercentage: 65
+    name: vote
+  minReplicas: 3
+  maxReplicas: 12
+  targetCPUUtilizationPercentage: 50
