@@ -2,7 +2,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: standard
-provisioner: kubernetes.io/aws-ebs  # Replace with your cloud provider’s provisioner
+provisioner: kubernetes.io/aws-ebs  
 volumeBindingMode: Immediate
 ---
 apiVersion: v1
@@ -36,13 +36,13 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: "standard"  # Must match StatefulSet storageClassName
+  storageClassName: "standard"  
   capacity:
     storage: 3Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data"  # This path is specific to the Kubernetes node filesystem; update as needed
+    path: "/mnt/data"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -108,7 +108,7 @@ spec:
         name: postgres-storage
       spec:
         accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "standard"  # Ensure this matches PV
+        storageClassName: "standard"  
         resources:
           requests:
             storage: 1Gi
