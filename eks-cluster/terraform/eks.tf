@@ -21,9 +21,6 @@ resource "aws_eks_cluster" "example" {
     bootstrap_cluster_creator_admin_permissions = true
   }
 
-
-  # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
-  # Otherwise, EKS will not be able to properly delete EKS managed EC2 infrastructure such as Security Groups.
   depends_on = [
     aws_iam_role_policy_attachment.example-AmazonEKSClusterPolicy,
     aws_iam_role_policy_attachment.example-AmazonEKSVPCResourceController,
@@ -48,14 +45,14 @@ resource "aws_eks_addon" "eks-pod-identity-agent" {
   addon_version = "v1.3.2-eksbuild.2"
 }
 
-# resource "aws_eks_addon" "example" {
-#  cluster_name                = aws_eks_cluster.example.name
-#  addon_name                  = "coredns"
-#  addon_version               = "v1.11.3-eksbuild.1"
-#  depends_on = [
-#    aws_eks_node_group.example
-#]
-#}
+ resource "aws_eks_addon" "example" {
+  cluster_name                = aws_eks_cluster.example.name
+  addon_name                  = "coredns"
+  addon_version               = "v1.11.3-eksbuild.1"
+  depends_on = [
+    aws_eks_node_group.example
+]
+}
 
 output "endpoint" {
   value = aws_eks_cluster.example.endpoint
