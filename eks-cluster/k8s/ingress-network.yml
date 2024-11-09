@@ -14,7 +14,7 @@ spec:
           path: "/app"
           backend:
             service:
-              name: voting-svc
+              name: vote-service
               port:
                 number: 80
 
