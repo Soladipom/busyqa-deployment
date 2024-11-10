@@ -58,3 +58,20 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEC2ContainerRegistryRea
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = aws_iam_role.node_example.name
 }
+# EKS Cluster Add-On EBS CSI Driver
+
+data "aws_iam_policy_document" "ebs_csi_driver" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["pods.eks.amazonaws.com"]
+    }
+
+    actions = [
+      "sts:AssumeRole",
+      "sts:TagSession"
+    ]
+  }
+}
