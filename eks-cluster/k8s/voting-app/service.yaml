@@ -1,11 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
+  creationTimestamp: null
+  labels:
+    app: voting-app
   name: vote-service
 spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
   selector:
     app: voting-app
-  ports:
-    - port: 80
-      targetPort: 80
-  type: LoadBalancer
