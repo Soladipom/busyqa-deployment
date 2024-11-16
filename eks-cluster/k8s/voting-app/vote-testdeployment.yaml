@@ -127,7 +127,7 @@ spec:
         - name: POSTGRES_USER
           valueFrom:
             configMapKeyRef:
-              name: voteapp-configmap
+              name: vote-configmap
               key: POSTGRES_USER
         - name: POSTGRES_PASSWORD
           valueFrom:
