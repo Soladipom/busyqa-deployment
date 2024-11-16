@@ -96,7 +96,7 @@ metadata:
   name: postgres-pvc
   namespace: vote
 spec:
-  storageClassName: vote-svc  # Reference to the StorageClass
+  storageClassName: vote-sc  # Reference to the StorageClass
   accessModes:
     - ReadWriteOnce  # Only one node can mount the volume
   resources:
